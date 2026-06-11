@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jerome Biju</title>
+  <meta name="description" content="Jerome Biju — Curiosity turned into code. An interactive cinematic journey." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+
+  <!-- GSAP + ScrollTrigger -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <!-- Lenis smooth scroll -->
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    
+    <link rel="icon" type="image/png" href="favicon.png">
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- LOADER -->
+  <div class="loader" id="loader">
+    <div class="loader-content">
+      <p class="loader-line" id="loaderLine1">Welcome to my Journey.</p>
+      <p class="loader-line loader-line-2" id="loaderLine2">Scroll to continue.</p>
+      <div class="loader-bar-wrap glass-panel">
+        <div class="loader-bar" id="loaderBar"></div>
+      </div>
+    </div>
+  </div>
+
+  <main id="main" class="main-hidden">
+
+    <!-- BACKGROUND CANVAS (Ambient fluid particles) -->
+    <canvas class="bg-canvas" id="bgCanvas"></canvas>
+
+    <!-- HERO SECTION -->
+    <section class="hero" id="hero">
+      <div class="hero-inner glass-ultra">
+
+        <!-- Left: text -->
+        <div class="hero-text">
+          <div class="alpina-stripe" data-reveal></div>
+          <span class="hero-eyebrow" data-reveal>Jerome Biju</span>
+          <h1 class="hero-name" id="heroName" data-reveal>
+            <span class="name-word">I'm</span>
+            <span class="name-word hero-name-highlight">Jerome</span>
+            <span class="name-word">Biju</span>
+          </h1>
+          <p class="hero-sub" data-reveal>Learning Machines, Understanding People.</p>
+          <p class="hero-desc" data-reveal>
+            Developer · Explorer<br />
+            Building ideas into elegant digital experiences.
+          </p>
+          <div class="hero-cta" data-reveal>
+            <a href="#chapter-1" class="btn btn-primary glass-btn">
+              <span>Explore Journey</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+            <a href="#contact" class="btn btn-ghost glass-btn">
+              <span>Find Me</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Right: Spline 3D Element -->
+        <div class="hero-orb-wrap" id="heroOrbWrap">
+          <canvas id="bgCanvasOrb"></canvas>
+        </div>
+
+      </div>
+
+      <!-- Scroll hint -->
+      <div class="scroll-hint" data-reveal>
+        <div class="scroll-line"></div>
+        <span>Scroll Down</span>
+      </div>
+    </section>
+
+    <!-- CHAPTER 01 — LKG -->
+    <section class="chapter" id="chapter-1">
+      <div class="chapter-bg chapter-bg--hydrangea"></div>
+      <div class="chapter-inner glass-ultra parallax-card">
+        <div class="chapter-meta">
+          <span class="chapter-num">01</span>
+          <span class="chapter-school">Cardinal Padiyara Public School Manimala</span>
+        </div>
+        <h2 class="chapter-title" data-split>Wonder</h2>
+        <div class="alpina-stripe-left"></div>
+        <p class="chapter-theme-tag glass-pill inline-pill">KG — The Beginning</p>
+        <p class="chapter-body mt-4">
+          It starts here. A small child walking into a classroom filled with cries for the very first time,
+          eyes wide, heart open. The world was enormous and every single thing in it
+          was a question worth asking. This was the beginning of curiosity — pure,
+          unfiltered, unstoppable.
+        </p>
+        <blockquote class="chapter-quote glass-quote">
+          "The beginning of curiosity."
+        </blockquote>
+      </div>
+    </section>
+
+    <!--Interlude Family-->
+
+    <section class="interlude-section" id="interlude-family">
+      <div class="interlude-trigger glass-ultra" id="familyTrigger">
+        <div class="interlude-orb">
+          <div class="interlude-orb-glow" style="background: radial-gradient(circle, rgba(216, 180, 254, 0.15), transparent 70%);"></div>
+          <!-- Home Icon SVG -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+            <polyline points="9 22 9 12 15 12 15 22"/>
+          </svg>
+        </div>
+        <div class="interlude-hint">
+          <span class="interlude-label" style="color: var(--lavender)">The Core Circle</span>
+          <span class="interlude-expand-text">Tap to unfold the warmth of family.</span>
+        </div>
+        <div class="interlude-arrow">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+      </div>
+
+      <div class="interlude-body" id="familyBody">
+        <div class="interlude-content glass-ultra mt-4">
+          <div class="chapter-meta">
+            <span class="chapter-num" style="color: var(--lavender)">✦</span>
+            <span class="chapter-school">Home</span>
+          </div>
+          <h2 class="chapter-title" style="color: var(--lavender)">Family</h2>
+          <div class="alpina-stripe-left"></div>
+          <p class="chapter-body">
+            The anchor in every storm and the foundation of every dream. 
+            Before the code, the books, and the ambitions, there was home—a sanctuary 
+            of unconditional love, endless patience, and unwavering belief.
+          </p>
+
+          <div class="memory-cards">
+            <div class="memory-card glass-panel" style="--rot: -1deg; --delay: 0s">
+              <div class="memory-card-inner">
+                <div class="memory-card-img">🏡</div>
+                <p>Unconditional support through every pivot</p>
+              </div>
+            </div>
+            <div class="memory-card glass-panel" style="--rot: 2deg; --delay: 0.1s">
+              <div class="memory-card-inner">
+                <div class="memory-card-img">🍲</div>
+                <p>Sunday dinners and groundings that kept me human</p>
+              </div>
+            </div>
+            <div class="memory-card glass-panel" style="--rot: -2deg; --delay: 0.2s">
+              <div class="memory-card-inner">
+                <div class="memory-card-img">❤️</div>
+                <p>The quiet, unshakeable knowing that home is always there</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CHAPTER 02 — CLASS 10 -->
+    <section class="chapter" id="chapter-2">
+      <div class="chapter-bg chapter-bg--glow"></div>
+      <div class="chapter-inner glass-ultra parallax-card">
+        <div class="chapter-meta">
+          <span class="chapter-num">02</span>
+          <span class="chapter-school">Cardinal Padiyara Public School Manimala</span>
+        </div>
+        <h2 class="chapter-title" data-split>Transformation</h2>
+        <div class="alpina-stripe-left"></div>
+        <p class="chapter-theme-tag glass-pill inline-pill">Class 10 — Ambition Awakens</p>
+        <p class="chapter-body mt-4">
+          Something shifted. The curiosity of childhood found focus.Study became a neccessity,rather a crude task. The question
+          was no longer "what is this?" but "how far can I go? Marks alone won't do but yeah... "
+        </p>
+        <div class="interest-stack">
+          <div class="interest-card glass-pill" style="--delay: 0s">🧪 Learning</div>
+        </div>
+        <div class="achievement-card glass-panel-deep" id="achievement-2" data-score="95">
+          <div class="achievement-inner">
+            <span class="achievement-label">Class 10 Board Score</span>
+            <div class="achievement-score">
+              <span class="score-number" id="score-2">0</span>
+              <span class="score-pct">%</span>
+            </div>
+            <div class="achievement-stars" id="achStars-2"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--Teachers-->
+
+    <!-- INTERLUDE — TEACHERS -->
+    <section class="interlude-section" id="interlude-teachers">
+      <div class="interlude-trigger glass-ultra" id="teachersTrigger">
+        <div class="interlude-orb">
+          <div class="interlude-orb-glow" style="background: radial-gradient(circle, rgba(147, 197, 253, 0.15), transparent 70%);"></div>
+          <!-- Book/Guide Icon SVG -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+          </svg>
+        </div>
+        <div class="interlude-hint">
+          <span class="interlude-label" style="color: var(--blue)">The Guides</span>
+          <span class="interlude-expand-text">Tap to unfold the mentors who shaped the journey.</span>
+        </div>
+        <div class="interlude-arrow">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+      </div>
+
+      <div class="interlude-body" id="teachersBody">
+        <div class="interlude-content glass-ultra mt-4">
+          <div class="chapter-meta">
+            <span class="chapter-num" style="color: var(--blue)">✧</span>
+            <span class="chapter-school">Mentors</span>
+          </div>
+          <h2 class="chapter-title" style="color: var(--blue)">Teachers</h2>
+          <div class="alpina-stripe-left"></div>
+          <p class="chapter-body">
+            Beyond the syllabus and the exams, there were the guides. The ones who saw potential 
+            before the grades reflected it. They didn't just teach subjects; they taught discipline, 
+            curiosity, and the courage to ask "why."
+          </p>
+
+          <div class="memory-cards">
+            <div class="memory-card glass-panel" style="--rot: -2deg; --delay: 0s">
+              <div class="memory-card-inner">
+                <div class="memory-card-img">📘</div>
+                <p>Pushing boundaries beyond the textbook</p>
+              </div>
+            </div>
+            <div class="memory-card glass-panel" style="--rot: 1deg; --delay: 0.1s">
+              <div class="memory-card-inner">
+                <div class="memory-card-img">💡</div>
+                <p>The extra hours spent clearing endless doubts</p>
+              </div>
+            </div>
+            <div class="memory-card glass-panel" style="--rot: -1deg; --delay: 0.2s">
+              <div class="memory-card-inner">
+                <div class="memory-card-img">🧭</div>
+                <p>Guidance that turned confusion into clarity</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CHAPTER 03 — CLASS 11 -->
+    <section class="chapter" id="chapter-3">
+      <div class="chapter-bg chapter-bg--interface"></div>
+      <div class="chapter-inner glass-ultra parallax-card">
+        <div class="chapter-meta">
+          <span class="chapter-num">03</span>
+          <span class="chapter-school">Exploration Year</span>
+        </div>
+        <h2 class="chapter-title" data-split>Exploration</h2>
+        <div class="alpina-stripe-left"></div>
+        <p class="chapter-theme-tag glass-pill inline-pill">Class 11 — Creativity Unleashed</p>
+        <p class="chapter-body mt-4">
+          Code. Photography. Videography. Curiosity metastasized into creation. Screens became
+          canvases. Terminals became portals. The first lines of code weren't just syntax —
+          they were spells. Each photograph a frozen universe. Each experiment a door
+          to somewhere undiscovered.
+        </p>
+        <div class="interest-stack">
+          <div class="interest-card glass-pill" style="--delay: 0s">💻 Coding</div>
+          <div class="interest-card glass-pill" style="--delay: 0.15s">📷 Photography</div>
+          <div class="interest-card glass-pill" style="--delay: 0.3s">🔭 Astronomy</div>
+          <div class="interest-card glass-pill" style="--delay: 0.45s">🎨 Design</div>
+          <div class="interest-card glass-pill" style="--delay: 0.6s">🧪 Science</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- INTERLUDE — FRIENDS -->
+    <section class="interlude-section" id="interlude-friends">
+      <div class="interlude-trigger glass-ultra" id="friendsTrigger">
+        <div class="interlude-orb">
+          <div class="interlude-orb-glow"></div>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+            <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/>
+            <circle cx="9" cy="7" r="4"/>
+            <path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/>
+          </svg>
+        </div>
+        <div class="interlude-hint">
+          <span class="interlude-label">A pause for something human</span>
+          <span class="interlude-expand-text">Tap to unfold garment of friendship.</span>
+        </div>
+        <div class="interlude-arrow">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+      </div>
+
+      <div class="interlude-body" id="friendsBody">
+        <div class="interlude-content glass-ultra mt-4">
+          <div class="chapter-meta">
+            <span class="chapter-num" style="color: var(--pink)">♡</span>
+            <span class="chapter-school">Them</span>
+          </div>
+          <h2 class="chapter-title" style="color: var(--pink)">Friends</h2>
+          <div class="alpina-stripe-left"></div>
+          <p class="chapter-body">
+            Before the intensity of what was coming, there were people.
+            Laughter echoing in corridors. Secrets passed in whispers.
+            Late evenings that stretched until the sky turned gold.
+            These weren't just friends — they were the constellations
+            that made the map of life readable.
+          </p>
+
+          <div class="memory-cards">
+            <div class="memory-card glass-panel" style="--rot: -2deg; --delay: 0s">
+              <div class="memory-card-inner">
+                <div class="memory-card-img">☕</div>
+                <p>Kiran K Tony</p>
+              </div>
+            </div>
+            <div class="memory-card glass-panel" style="--rot: 1deg; --delay: 0.1s">
+              <div class="memory-card-inner">
+                <div class="memory-card-img">💻</div>
+                <p>Asish V Varghese</p>
+              </div>
+            </div>
+            <div class="memory-card glass-panel" style="--rot: -2deg; --delay: 0.1s">
+              <div class="memory-card-inner">
+                <div class="memory-card-img">✨</div>
+                <p>Sion Shiju</p>
+              </div>
+            </div>
+            <div class="memory-card glass-panel" style="--rot: 1deg; --delay: 0.1s">
+              <div class="memory-card-inner">
+                <div class="memory-card-img">🏃</div>
+                <p>Akhinesh Biju</p>
+              </div>
+            </div>
+            <div class="memory-card glass-panel" style="--rot: -2deg; --delay: 0.1s">
+              <div class="memory-card-inner">
+                <div class="memory-card-img">🤪</div>
+                <p>Vivek Kumar</p>
+              </div>
+            </div>
+            <div class="memory-card glass-panel" style="--rot: 1deg; --delay: 0.1s">
+              <div class="memory-card-inner">
+                <div class="memory-card-img">🤓</div>
+                <p>Anandhu Anand</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CHAPTER 04 — CLASS 12 -->
+    <section class="chapter" id="chapter-4">
+      <div class="chapter-bg chapter-bg--intensity"></div>
+      <div class="chapter-inner glass-ultra parallax-card">
+        <div class="chapter-meta">
+          <span class="chapter-num">04</span>
+          <span class="chapter-school">Cardinal Padiyara Public School Manimala</span>
+        </div>
+        <h2 class="chapter-title" data-split>Intensity</h2>
+        <div class="alpina-stripe-left"></div>
+        <p class="chapter-theme-tag glass-pill inline-pill">Class 12 — The Rush</p>
+        <p class="chapter-body mt-4">
+          Everything became sharper. The stakes grew higher. Sleep became a luxury;
+          focus became a weapon. This was the year the world demanded proof —
+          and We answered.
+        </p>
+        <div class="achievement-card glass-panel-deep" id="achievement-4" data-score="97">
+          <div class="achievement-inner">
+            <span class="achievement-label">Class 12 Board Score</span>
+            <div class="achievement-score">
+              <span class="score-number" id="score-4">0</span>
+              <span class="score-pct">%</span>
+            </div>
+            <div class="achievement-stars" id="achStars-4"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--INTERLUDE Achievement-->
+
+    <!-- ACHIEVEMENT — SCHOOL LEADER -->
+    <section class="interlude-section" id="interlude-leader">
+      <div class="interlude-trigger glass-ultra" id="leaderTrigger">
+        <div class="interlude-orb">
+          <div class="interlude-orb-glow" style="background: radial-gradient(circle, rgba(167, 139, 250, 0.15), transparent 70%);"></div>
+          <!-- Flag/Leadership Icon SVG -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+            <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/>
+            <line x1="4" y1="22" x2="4" y2="15"/>
+          </svg>
+        </div>
+        <div class="interlude-hint">
+          <span class="interlude-label" style="color: var(--violet)">Milestone</span>
+          <span class="interlude-expand-text">Tap to unfold: School Leader 2024-25.</span>
+        </div>
+        <div class="interlude-arrow">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+      </div>
+
+      <div class="interlude-body" id="leaderBody">
+        <div class="interlude-content glass-ultra mt-4">
+          <div class="chapter-meta">
+            <span class="chapter-num" style="color: var(--violet)">★</span>
+            <span class="chapter-school">2024-25</span>
+          </div>
+          <h2 class="chapter-title" style="color: var(--violet)">School Leader</h2>
+          <div class="alpina-stripe-left"></div>
+          <p class="chapter-body">
+            A year of stepping up. Serving as the School Leader wasn't just a title; it was an exercise 
+            in responsibility, empathy, and action. It was about listening to the collective voice 
+            and learning that true leadership is simply service in disguise.
+          </p>
+
+          <div class="memory-cards">
+            <div class="memory-card glass-panel" style="--rot: -1deg; --delay: 0s">
+              <div class="memory-card-inner">
+                <div class="memory-card-img">🎤</div>
+                <p>Public speaking and representing the student body</p>
+              </div>
+            </div>
+            <div class="memory-card glass-panel" style="--rot: 2deg; --delay: 0.1s">
+              <div class="memory-card-inner">
+                <div class="memory-card-img">🤝</div>
+                <p>Bridging the gap between students and administration</p>
+              </div>
+            </div>
+            <div class="memory-card glass-panel" style="--rot: -2deg; --delay: 0.2s">
+              <div class="memory-card-inner">
+                <div class="memory-card-img">⚡</div>
+                <p>Organizing events under pressure and tight deadlines</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CHAPTER 05 — JEE REPEATER -->
+    <section class="chapter" id="chapter-5">
+      <div class="chapter-bg chapter-bg--rise"></div>
+      <div class="chapter-inner glass-ultra parallax-card">
+        <div class="chapter-meta">
+          <span class="chapter-num">05</span>
+          <span class="chapter-school">Brilliant Study Center, Pala</span>
+        </div>
+        <h2 class="chapter-title" data-split>Resilience</h2>
+        <div class="alpina-stripe-left"></div>
+        <p class="chapter-theme-tag glass-pill inline-pill">JEE Repeater — The Long Road</p>
+        <p class="chapter-body mt-4">
+          Sometimes progress looks like starting over. The classroom was different.
+          The faces were new. The pressure was immense. But something else was
+          different too — a quiet, unshakeable knowing that this detour
+          was not defeat. It was refinement.
+        </p>
+        <blockquote class="chapter-quote glass-quote">
+          "Sometimes progress looks like starting over."
+        </blockquote>
+      </div>
+    </section>
+
+    <!-- PROJECTS SECTION -->
+    <section class="projects-section" id="projects">
+      <div class="section-header">
+        <span class="section-label glass-pill">Some Recipies</span>
+        <h2 class="section-title">Projects</h2>
+        <div class="alpina-stripe-center"></div>
+        <p class="section-sub">Ideas built into reality.</p>
+      </div>
+
+      <div class="projects-grid">
+        <div class="project-card glass-ultra" data-tilt>
+          <div class="project-card-inner">
+            <div class="project-num">001</div>
+            <h3 class="project-name">Cinematic Portfolio</h3>
+            <p class="project-desc">An immersive digital autobiography powered by GSAP, Parallax, and pure storytelling.</p>
+            <div class="project-tags">
+              <span>HTML</span><span>CSS</span><span>Vanilla JS</span>
+            </div>
+            <div class="project-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card glass-ultra" data-tilt>
+          <div class="project-card-inner">
+            <div class="project-num">002</div>
+            <h3 class="project-name">Student Management System</h3>
+            <p class="project-desc">A productivity software for schools to manage tons of data with much less human labour.</p>
+            <div class="project-tags">
+              <span>Python</span><span>SQL</span><span>MySQL</span>
+            </div>
+            <div class="project-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section class="contact-section" id="contact">
+      <div class="contact-inner glass-ultra parallax-card">
+        <span class="section-label glass-pill inline-pill">Let's Connect</span>
+        <h2 class="contact-heading">
+          The story continues<br />
+          <em>beyond this screen.</em>
+        </h2>
+        <div class="alpina-stripe-center"></div>
+        <p class="contact-closing">
+          Still learning. Still building. Still becoming.
+        </p>
+
+        <div class="contact-links">
+          <a href="mailto:jeromebiju2023@gmail.com" class="contact-link glass-btn" data-hover="Email">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <span>Email</span>
+          </a>
+          <a href="https://linkedin.com/in/jerome-biju-b833962a3" target="_blank" rel="noopener" class="contact-link glass-btn" data-hover="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            <span>LinkedIn</span>
+          </a>
+          <a href="https://instagram.com/jerome_biju_" target="_blank" rel="noopener" class="contact-link glass-btn" data-hover="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            <span>Instagram</span>
+          </a>
+        
+          <a href="https://t.me/jbontele" target="_blank" rel="noopener" class="contact-link glass-btn" data-hover="Telegram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+            <span>Telegram</span>
+          </a>
+          <a href="https://github.com/itsjbongit" target="_blank" rel="noopener" class="contact-link glass-btn" data-hover="GitHub">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+            <span>GitHub</span>
+          </a>
+        </div>
+
+        <div class="contact-footer">
+          <span>© 2026 Jerome Biju</span>
+          <span>Built with curiosity & (vibe)code</span>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
